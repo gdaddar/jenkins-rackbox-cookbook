@@ -2,6 +2,9 @@
 # Cookbook Name:: rackbox
 # Recipe:: default
 #
+
+`hostname 0.0.0.0`
+
 package "libsqlite3-dev"
 package "libpq-dev"
 package "postgresql"
@@ -11,9 +14,14 @@ include_recipe "mysql"
 include_recipe "sqlite"
 include_recipe "postgresql"
 #include_recipe "nodejs" #to cut down on compile time
+include_recipe "runit"
+
+include_recipe "java"
+include_recipe "jenkins"
+
 include_recipe "rackbox::ruby"
 include_recipe "rackbox::nginx"
-include_recipe "runit"
+include_recipe "rackbox::jenkins"
 
 include_recipe "imagemagick"
 include_recipe "imagemagick::devel"
