@@ -31,7 +31,7 @@ jenkins_cli "install-plugin rbenv"
 jenkins_cli "safe-restart"
 
 puts "##################################### Pwd"
-Dir.pwd
+puts "#{Dir.pwd}"
 
 git_repo = node["rackbox"]["jenkins"]["git_repo"]
 build_command = node["rackbox"]["jenkins"]["command"]
