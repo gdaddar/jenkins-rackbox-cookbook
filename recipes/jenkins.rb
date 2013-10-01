@@ -4,7 +4,7 @@
 #
 # Install and setup Jenkins environment
 #
-#include_recipe "apt"
+
 include_recipe "java"
 include_recipe "jenkins"
 
@@ -26,65 +26,23 @@ puts host
 jenkins_cli "safe-restart"
 
 jenkins_cli "install-plugin github"
-jenkins_cli "install-plugin rbenv" #don't need
-#jenkins_cli "install-plugin envinject" don't need
+jenkins_cli "install-plugin rbenv"
 
-# If we were going to make this work we would need to:
-# 1) Install a plugin that allows for user account creating
-# 2) Create a user account with the CLI
+jenkins_cli "safe-restart"
 
-# Jenkins build script
-# PATH=/opt/rbenv/shims:/opt/rbenv/bin:/opt/rbenv/plugins/ruby_build/bin:${PATH}
-# bundle install
-# bundle exec rake
+puts "##################################### Pwd"
+Dir.pwd
 
-#jenkins_cli "safe-restart"
+git_repo = node["rackbox"]["jenkins"]["git_repo"]
+build_command = node["rackbox"]["jenkins"]["command"]
+node["rackbox"]["jenkins"]["job"]
+node["rackbox"]["jenkins"]["ip_address"]
 
-#node["rackbox"]["jenkins"]["git_repo"]
-#node["rackbox"]["jenkins"]["command"]
-#node["rackbox"]["jenkins"]["job"]
-#node["rackbox"]["jenkins"]["ip_address"]
-
-git_branch = 'master'
-job_name = node["rackbox"]["jenkins"]["job"]
-
-job_config = File.join(node[:jenkins][:node][:home], "#{job_name}-config.xml")
-
-#jenkins_job job_name do
-#  action :create
-#  config job_config
-#end
-#
-#template job_config do
-#  source "jenkins_job-config.xml.erb"
-#  #variables :job_name => job_name, :branch => git_branch, :node => node[:fqdn]
-#  #notifies :update, resources(:jenkins_job => job_name), :immediately
-#  #notifies :build, resources(:jenkins_job => job_name), :immediately
-#end
-
-#`mkdir /var/lib/jenkins/jobs/#{job_name}`
-#``
+#template = File.read("#{Dir.pwd}/default/jenkins-job_config.xml.erb")
+#template = Erubis::Eruby.new(template)
+#config = template.result(:git_url => git_repo, :build_command => build_command)
+#out_file = File.new("config.xml", "w")
+#out_file.puts(config)
+#out_file.close
 
 #jenkins_cli "create-job #{job_name} < "
-
-=begin
-git_branch = 'master'
-job_name = node["rackbox"]["jenkins"]["job"]
-
-#job_config = File.open("jenkins_job-config.xml", "w")
-job_config = "jenkins_job-config.xml"
-
-jenkins_job job_name do
-  action :nothing
-  config job_config
-end
-
-template job_config do
-  source "jenkins_job-config.xml.erb"
-  variables :job_name => job_name, :branch => git_branch, :node => node[:fqdn]
-  notifies :update, resources(:jenkins_job => job_name), :immediately
-  notifies :build, resources(:jenkins_job => job_name), :immediately
-end
-=end
-
-#`hostname #{host}`

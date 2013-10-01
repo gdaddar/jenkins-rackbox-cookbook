@@ -10,7 +10,7 @@
       <hudson.plugins.git.UserRemoteConfig>
         <name></name>
         <refspec></refspec>
-        <url>https://github.com/hayesmp/railsgirls-app.git</url>
+        <url><%= git_url %></url>
       </hudson.plugins.git.UserRemoteConfig>
     </userRemoteConfigs>
     <branches>
@@ -51,7 +51,7 @@
     <hudson.tasks.Shell>
       <command>bundle install
 rake db:migrate
-rake</command>
+<%= build_command %></command>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>
@@ -64,7 +64,7 @@ rake</command>
           <rbenv__revision pluginid="rbenv" ruby-class="String">master</rbenv__revision>
           <rbenv__repository pluginid="rbenv" ruby-class="String">https://github.com/sstephenson/rbenv.git</rbenv__repository>
           <ruby__build__revision pluginid="rbenv" ruby-class="String">master</ruby__build__revision>
-          <gem__list pluginid="rbenv" ruby-class="String">bundler,rake,therubyracer</gem__list>
+          <gem__list pluginid="rbenv" ruby-class="String">bundler,rake</gem__list>
           <version pluginid="rbenv" ruby-class="String">2.0.0-p247</version>
           <ignore__local__version ruby-class="FalseClass" pluginid="rbenv"/>
         </object>
