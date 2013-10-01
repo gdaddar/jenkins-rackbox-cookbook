@@ -23,7 +23,7 @@ depends 'imagemagick'
 depends 'mysql'
 depends 'sqlite'
 depends 'postgresql'
-#depends 'nodejs' #to cut down on compile time
+depends 'nodejs' #to cut down on compile time
 depends 'rbenv'
 depends 'nginx'
 depends 'unicorn', ">= 1.2.2"
