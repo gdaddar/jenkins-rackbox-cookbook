@@ -4,6 +4,9 @@
 #
 # Install Postgresql and create specified databases and users.
 #
+include_recipe "apt"
+include_recipe "build-essential"
+
 
 root_password = node["rackbox"]["db_root_password"]
 if root_password
