@@ -4,6 +4,7 @@
 #
 
 `hostname 0.0.0.0`
+`apt-get install build-essential`
 
 package "build-essential"
 package "libsqlite3-dev"
