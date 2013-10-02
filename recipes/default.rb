@@ -10,6 +10,7 @@ package "libsqlite3-dev"
 package "libpq-dev"
 package "postgresql"
 
+include_recipe "apt"
 include_recipe "appbox"
 include_recipe "build-essential"
 include_recipe "mysql"
