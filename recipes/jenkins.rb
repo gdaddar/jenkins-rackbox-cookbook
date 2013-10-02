@@ -30,13 +30,20 @@ jenkins_cli "install-plugin rbenv"
 
 jenkins_cli "safe-restart"
 
-puts "##################################### Pwd"
-puts "#{Dir.pwd}"
 
 git_repo = node["rackbox"]["jenkins"]["git_repo"]
 build_command = node["rackbox"]["jenkins"]["command"]
 node["rackbox"]["jenkins"]["job"]
 node["rackbox"]["jenkins"]["ip_address"]
+
+template '/home/jj-config.xml' do
+  source 'jenkins-job_config.xml.erb'
+  variables ({:git_url => git_repo, :build_command => build_command})
+end
+
+jenkins_cli "create-job #{job_name} < /home/jj-config.xml"
+
+jenkins_cli "safe-restart"
 
 #template = File.read("#{Dir.pwd}/default/jenkins-job_config.xml.erb")
 #template = Erubis::Eruby.new(template)
@@ -45,4 +52,4 @@ node["rackbox"]["jenkins"]["ip_address"]
 #out_file.puts(config)
 #out_file.close
 
-#jenkins_cli "create-job #{job_name} < "
+
