@@ -11,10 +11,11 @@ package "libpq-dev"
 package "postgresql"
 
 include_recipe "appbox"
+include_recipe "build-essential"
 include_recipe "mysql"
 include_recipe "sqlite"
 include_recipe "postgresql"
-include_recipe "nodejs" #to cut down on compile time
+#include_recipe "nodejs" #to cut down on compile time
 include_recipe "runit"
 
 include_recipe "java"
