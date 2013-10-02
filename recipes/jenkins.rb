@@ -33,7 +33,7 @@ jenkins_cli "safe-restart"
 
 git_repo = node["rackbox"]["jenkins"]["git_repo"]
 build_command = node["rackbox"]["jenkins"]["command"]
-node["rackbox"]["jenkins"]["job"]
+job_name = node["rackbox"]["jenkins"]["job"]
 node["rackbox"]["jenkins"]["ip_address"]
 
 template '/home/jj-config.xml' do
