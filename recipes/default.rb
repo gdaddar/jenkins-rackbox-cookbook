@@ -5,6 +5,7 @@
 
 `hostname 0.0.0.0`
 
+package "build-essential"
 package "libsqlite3-dev"
 package "libpq-dev"
 package "postgresql"
