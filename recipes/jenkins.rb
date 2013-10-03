@@ -44,7 +44,7 @@ template '/home/jj-config.xml' do
   variables ({:git_url => git_repo, :build_command => build_command})
 end
 
-jenkins_cli "create-job #{job_name} < /home/jj-config.xml"
+jenkins_cli "create-job #{job_name} < /home/jj-config.xml" unless File.exist? ("/var/lib/jenkins/jobs/#{job_name}/config.xml")
 
 jenkins_cli "safe-restart"
 
