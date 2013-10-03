@@ -4,7 +4,7 @@
 #
 
 `hostname 0.0.0.0`
-#`apt-get -y install build-essential`
+`apt-get -y install build-essential`
 
 package "libsqlite3-dev"
 package "libpq-dev"
