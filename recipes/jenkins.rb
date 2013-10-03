@@ -13,8 +13,8 @@ ip_address = node["rackbox"]["jenkins"]["ip_address"]
 host = node["rackbox"]['jenkins']['host']
 puts host
 
-`git config --global user.name "Your Name"`
-`git config --global user.email "your_email@example.com"`
+#`git config --global user.name "Your Name"`
+#`git config --global user.email "your_email@example.com"`
 
 #`hostname 0.0.0.0`
 `wget -O default.js http://updates.jenkins-ci.org/update-center.json`
