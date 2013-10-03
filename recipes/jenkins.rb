@@ -31,7 +31,7 @@ jenkins_cli "install-plugin github"
 
 jenkins_cli "install-plugin rbenv"
 
-jenkins_cli "safe-restart"
+#jenkins_cli "safe-restart"
 
 
 git_repo = node["rackbox"]["jenkins"]["git_repo"]
@@ -46,7 +46,6 @@ end
 
 jenkins_cli "create-job #{job_name} < /home/jj-config.xml" unless File.exist? ("/var/lib/jenkins/jobs/#{job_name}/config.xml")
 
-jenkins_cli "safe-restart"
 
 #template = File.read("#{Dir.pwd}/default/jenkins-job_config.xml.erb")
 #template = Erubis::Eruby.new(template)
