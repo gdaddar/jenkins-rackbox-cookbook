@@ -1,3 +1,5 @@
+default["rackbox"]["default_config"]["build_essential"]["compiletime"] = true
+
 default["rackbox"]["ruby"]["versions"] = %w(1.9.3-p385)
 default["rackbox"]["ruby"]["global_version"] = "1.9.3-p385"
 default["rackbox"]["upstream_start_port"]["unicorn"] = 10001
@@ -24,8 +26,6 @@ default["rackbox"]["default_config"]["passenger_runit"]["max_pool_size"] = 6
 default["rackbox"]["default_config"]["passenger_runit"]["min_instances"] = 1
 default["rackbox"]["default_config"]["passenger_runit"]["spawn_method"] = "smart-lv2"
 default["rackbox"]["default_config"]["passenger_runit"]["host"] = "localhost"
-
-default["rackbox"]["default_config"]["build_essential"]["compiletime"] = true
 
 default["rackbox"]["apps"]["unicorn"] = []
 default["rackbox"]["apps"]["passenger"] = []
