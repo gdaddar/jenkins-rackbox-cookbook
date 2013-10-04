@@ -50,7 +50,7 @@
   <builders>
     <hudson.tasks.Shell>
       <command>bundle install
-rake db:migrate
+bundle exec rake db:migrate
 <%= @build_command %></command>
     </hudson.tasks.Shell>
   </builders>
