@@ -46,6 +46,9 @@ end
 
 jenkins_cli "create-job #{job_name} < /home/jj-config.xml" unless File.exist? ("/var/lib/jenkins/jobs/#{job_name}/config.xml")
 
+template '/var/lib/jenkins/hudson.plugins.git.GitSCM.xml' do
+  source 'jenkins-git-config.xml.erb'
+end
 
 #template = File.read("#{Dir.pwd}/default/jenkins-job_config.xml.erb")
 #template = Erubis::Eruby.new(template)
