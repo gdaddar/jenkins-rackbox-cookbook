@@ -23,15 +23,20 @@ puts host
 `mv default.json /var/lib/jenkins/updates/`
 `chown -R jenkins:nogroup /var/lib/jenkins/updates`
 
-jenkins_cli "safe-restart"
-
-jenkins_cli "install-plugin github"
-
-#jenkins_cli "safe-restart"
-
-jenkins_cli "install-plugin rbenv"
+%w(github rbenv).each do |plugin|
+  jenkins_cli "install-plugin #{plugin}"
+  jenkins_cli "safe-restart"
+end
 
 #jenkins_cli "safe-restart"
+#
+#jenkins_cli "install-plugin github"
+#
+##jenkins_cli "safe-restart"
+#
+#jenkins_cli "install-plugin rbenv"
+#
+##jenkins_cli "safe-restart"
 
 
 git_repo = node["rackbox"]["jenkins"]["git_repo"]
@@ -44,7 +49,10 @@ template '/home/jj-config.xml' do
   variables ({:git_url => git_repo, :build_command => build_command})
 end
 
+create_job do
 jenkins_cli "create-job #{job_name} < /home/jj-config.xml" unless File.exist? ("/var/lib/jenkins/jobs/#{job_name}/config.xml")
+end
+
 
 template '/var/lib/jenkins/hudson.plugins.git.GitSCM.xml' do
   source 'jenkins-git-config.xml.erb'
