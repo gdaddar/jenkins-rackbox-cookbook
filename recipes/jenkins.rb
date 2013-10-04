@@ -49,10 +49,7 @@ template '/home/jj-config.xml' do
   variables ({:git_url => git_repo, :build_command => build_command})
 end
 
-create_job do
 jenkins_cli "create-job #{job_name} < /home/jj-config.xml" unless File.exist? ("/var/lib/jenkins/jobs/#{job_name}/config.xml")
-end
-
 
 template '/var/lib/jenkins/hudson.plugins.git.GitSCM.xml' do
   source 'jenkins-git-config.xml.erb'
