@@ -12,6 +12,9 @@ include_recipe "jenkins"
 ip_address = node["rackbox"]["jenkins"]["ip_address"]
 host = node["rackbox"]['jenkins']['host']
 puts host
+puts "jabberwocky"
+puts ["rackbox"]["jenkins"]["server"]["version"]
+
 
 #`git config --global user.name "Your Name"`
 #`git config --global user.email "your_email@example.com"`

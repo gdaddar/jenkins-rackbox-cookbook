@@ -1,6 +1,6 @@
 #default["rackbox"]["default_config"]["build_essential"]["compiletime"] = true
 node.override['build_essential']["compiletime"] = true
-node.override['jenkins']['server']['version'] = '1.533'
+node.override["rackbox"]['jenkins']['server']['version'] = '1.533'
 
 default["rackbox"]["ruby"]["versions"] = %w(1.9.3-p385)
 default["rackbox"]["ruby"]["global_version"] = "1.9.3-p385"
