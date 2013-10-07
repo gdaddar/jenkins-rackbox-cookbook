@@ -17,15 +17,15 @@ puts host
 #`git config --global user.email "your_email@example.com"`
 
 #`hostname 0.0.0.0`
-`wget -O default.js http://updates.jenkins-ci.org/update-center.json`
-`sed '1d;$d' default.js > default.json`
-`mkdir /var/lib/jenkins/updates`
-`mv default.json /var/lib/jenkins/updates/`
-`chown -R jenkins:nogroup /var/lib/jenkins/updates`
+#`wget -O default.js http://updates.jenkins-ci.org/update-center.json`
+#`sed '1d;$d' default.js > default.json`
+#`mkdir /var/lib/jenkins/updates`
+#`mv default.json /var/lib/jenkins/updates/`
+#`chown -R jenkins:nogroup /var/lib/jenkins/updates`
 
 %w(github rbenv).each do |plugin|
   jenkins_cli "install-plugin #{plugin}"
-  jenkins_cli "safe-restart"
+
 end
 
 #jenkins_cli "safe-restart"
