@@ -4,14 +4,15 @@
 #
 
 `hostname 0.0.0.0`
-`apt-get -y install build-essential`
+#`apt-get -y install build-essential`
+
+include_recipe "build-essential"
 
 package "libsqlite3-dev"
 package "libpq-dev"
 package "postgresql"
 
 include_recipe "appbox"
-include_recipe "build-essential"
 include_recipe "mysql"
 include_recipe "sqlite"
 include_recipe "postgresql"

@@ -17,8 +17,9 @@ recipe "rackbox::jenkins", "setup jenkins with a new job"
 supports 'ubuntu'
 supports 'debian'
 
+depends 'build-essential'
 depends 'appbox'
-depends 'database'
+#depends 'database'
 depends 'imagemagick'
 depends 'mysql'
 depends 'sqlite'
