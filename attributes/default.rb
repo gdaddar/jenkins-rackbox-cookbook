@@ -1,4 +1,6 @@
-default["rackbox"]["default_config"]["build_essential"]["compiletime"] = true
+#default["rackbox"]["default_config"]["build_essential"]["compiletime"] = true
+puts "######## buld-essential"
+node.override['build_essential']["compiletime"] = true
 
 default["rackbox"]["ruby"]["versions"] = %w(1.9.3-p385)
 default["rackbox"]["ruby"]["global_version"] = "1.9.3-p385"
