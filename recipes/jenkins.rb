@@ -13,7 +13,7 @@ ip_address = node["rackbox"]["jenkins"]["ip_address"]
 host = node["rackbox"]['jenkins']['host']
 puts host
 puts "jabberwocky"
-puts ["rackbox"]["jenkins"]["server"]["version"]
+puts node["rackbox"]["jenkins"]["server"]["version"]
 
 
 #`git config --global user.name "Your Name"`
