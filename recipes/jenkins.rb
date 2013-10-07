@@ -4,6 +4,8 @@
 #
 # Install and setup Jenkins environment
 #
+puts "jabberwocky"
+puts node["jenkins"]["server"]["version"]
 
 include_recipe "java"
 include_recipe "jenkins"
@@ -12,8 +14,7 @@ include_recipe "jenkins"
 ip_address = node["rackbox"]["jenkins"]["ip_address"]
 host = node["rackbox"]['jenkins']['host']
 puts host
-puts "jabberwocky"
-puts node["jenkins"]["server"]["version"]
+
 
 
 #`git config --global user.name "Your Name"`
