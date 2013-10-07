@@ -55,6 +55,8 @@ template '/var/lib/jenkins/hudson.plugins.git.GitSCM.xml' do
   source 'jenkins-git-config.xml.erb'
 end
 
+jenkins_cli "safe-restart"
+
 #template = File.read("#{Dir.pwd}/default/jenkins-job_config.xml.erb")
 #template = Erubis::Eruby.new(template)
 #config = template.result(:git_url => git_repo, :build_command => build_command)
