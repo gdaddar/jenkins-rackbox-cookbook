@@ -10,6 +10,8 @@ include_recipe "build-essential"
 
 package "libsqlite3-dev"
 package "libpq-dev"
+package "libxslt-dev"
+package "libxml2-dev"
 package "postgresql"
 
 include_recipe "appbox"
