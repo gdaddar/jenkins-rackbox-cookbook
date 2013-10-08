@@ -21,11 +21,11 @@ puts host
 #`git config --global user.email "your_email@example.com"`
 
 #`hostname 0.0.0.0`
-`sudo wget -O default.js http://updates.jenkins-ci.org/update-center.json`
-`sudo sed '1d;$d' default.js > default.json`
-`sudo mkdir /var/lib/jenkins/updates`
-`sudo mv default.json /var/lib/jenkins/updates/`
-`sudo chown -R jenkins:nogroup /var/lib/jenkins/updates`
+#`sudo wget -O default.js http://updates.jenkins-ci.org/update-center.json`
+#`sudo sed '1d;$d' default.js > default.json`
+#`sudo mkdir /var/lib/jenkins/updates`
+#`sudo mv default.json /var/lib/jenkins/updates/`
+#`sudo chown -R jenkins:nogroup /var/lib/jenkins/updates`
 
 %w(github rbenv).each do |plugin|
   jenkins_cli "install-plugin #{plugin}"
