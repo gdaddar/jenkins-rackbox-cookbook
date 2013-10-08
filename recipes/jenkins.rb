@@ -20,7 +20,7 @@ puts host
 #`git config --global user.name "Your Name"`
 #`git config --global user.email "your_email@example.com"`
 
-`hostname 0.0.0.0`
+#`hostname 0.0.0.0`
 `wget -O default.js http://updates.jenkins-ci.org/update-center.json`
 `sed '1d;$d' default.js > default.json`
 `mkdir /var/lib/jenkins/updates`

@@ -3,7 +3,7 @@
 # Recipe:: default
 #
 
-`hostname 0.0.0.0`
+#`hostname 0.0.0.0`
 #`apt-get -y install build-essential`
 
 include_recipe "build-essential"
