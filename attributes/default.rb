@@ -1,6 +1,6 @@
 #default["rackbox"]["default_config"]["build_essential"]["compiletime"] = true
 node.override['build_essential']["compiletime"] = true
-node.override['jenkins']['server']['url'] = 'http://localhost:8080/jenkins'#'http://0.0.0.0'
+node.override['jenkins']['server']['url'] = 'http://0.0.0.0:8080/jenkins'#'http://0.0.0.0'
 
 default["rackbox"]["ruby"]["versions"] = %w(1.9.3-p385)
 default["rackbox"]["ruby"]["global_version"] = "1.9.3-p385"
