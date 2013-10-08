@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: rackbox
+# Cookbook Name:: jenkinsbox
 # Recipe:: nginx
 #
 # Install Nginx from source to support custom Nginx modules in future.

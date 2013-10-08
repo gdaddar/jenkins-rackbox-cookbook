@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: rackbox
+# Cookbook Name:: jenkinsbox
 # Recipe:: postgresql
 #
 # Install Postgresql and create specified databases and users.
@@ -8,9 +8,9 @@ include_recipe "apt"
 include_recipe "build-essential"
 
 
-root_password = node["rackbox"]["db_root_password"]
+root_password = node["jenkinsbox"]["db_root_password"]
 if root_password
-  Chef::Log.info %(Set node["postgresql"]["password"]["postgres"] attributes to node["rackbox"]["db_root_password"])
+  Chef::Log.info %(Set node["postgresql"]["password"]["postgres"] attributes to node["jenkinsbox"]["db_root_password"])
   node.set["postgresql"]["password"]["postgres"] = root_password
 end
 
@@ -34,7 +34,7 @@ postgresql_connection_info = {
     :password => node['postgresql']['password']['postgres']
 }
 
-node["rackbox"]["databases"]["postgresql"].each do |entry|
+node["jenkinsbox"]["databases"]["postgresql"].each do |entry|
 
   postgresql_database entry["database_name"] do
     connection postgresql_connection_info

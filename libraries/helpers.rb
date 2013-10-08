@@ -1,11 +1,11 @@
-module Rackbox
+module Jenkinsbox
   module Helpers
     def unicorn_config_filepath(appname)
       "/etc/unicorn/#{ appname }.rb"
     end
 
     def setup_passenger_runit(app, app_dir, default_port)
-      default_config =  node["rackbox"]["default_config"]["passenger_runit"].to_hash
+      default_config =  node["jenkinsbox"]["default_config"]["passenger_runit"].to_hash
       default_config["port"] = default_port
       config = merge_runit_config(
         default_config,
@@ -33,7 +33,7 @@ module Rackbox
 
     def setup_unicorn_runit(app, app_dir)
       config = merge_runit_config(
-        node["rackbox"]["default_config"]["unicorn_runit"],
+        node["jenkinsbox"]["default_config"]["unicorn_runit"],
         app["runit_config"]
       )
       unicorn_config_file = unicorn_config_filepath(app["appname"])
@@ -62,7 +62,7 @@ module Rackbox
     def setup_nginx_site(app, app_dir, upstream_port)
       upstream_server = "localhost:#{upstream_port}"
       config = merge_nginx_config(
-        node["rackbox"]["default_config"]["nginx"],
+        node["jenkinsbox"]["default_config"]["nginx"],
         app["nginx_config"]
       )
 
@@ -106,7 +106,7 @@ module Rackbox
 
     def setup_unicorn_config(app, app_dir, default_port)
       config = merge_unicorn_config(
-        node["rackbox"]["default_config"]["unicorn"],
+        node["jenkinsbox"]["default_config"]["unicorn"],
         app["unicorn_config"],
         app_dir,
         default_port

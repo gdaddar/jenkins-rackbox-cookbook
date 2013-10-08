@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: rackbox
+# Cookbook Name:: jenkinsbox
 # Recipe:: jenkins
 #
 # Install and setup Jenkins environment
@@ -11,7 +11,7 @@ include_recipe "java"
 include_recipe "jenkins"
 
 
-ip_address = node["rackbox"]["jenkins"]["ip_address"]
+ip_address = node["jenkinsbox"]["jenkins"]["ip_address"]
 
 directory "#{node[:jenkins][:server][:home]}" do
   owner "#{node[:jenkins][:server][:user]}"
@@ -37,10 +37,10 @@ end
 
 end
 
-git_repo = node["rackbox"]["jenkins"]["git_repo"]
-build_command = node["rackbox"]["jenkins"]["command"]
-job_name = node["rackbox"]["jenkins"]["job"]
-node["rackbox"]["jenkins"]["ip_address"]
+git_repo = node["jenkinsbox"]["jenkins"]["git_repo"]
+build_command = node["jenkinsbox"]["jenkins"]["command"]
+job_name = node["jenkinsbox"]["jenkins"]["job"]
+node["jenkinsbox"]["jenkins"]["ip_address"]
 
 template '/home/jj-config.xml' do
   source 'jenkins-job_config.xml.erb'
