@@ -6,7 +6,7 @@ description      "Setup a rack-based application server to run unicorn and passe
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          "0.1.2"
 
-depends 'build-essential'
+#depends 'build-essential'
 
 recipe "rackbox", "run all recipes."
 recipe "rackbox::ruby", "setup a ruby version manager `rbenv`."
