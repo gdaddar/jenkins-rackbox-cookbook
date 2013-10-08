@@ -22,21 +22,21 @@ include_recipe "runit"
 #include_recipe "jenkins"
 
 include_recipe "rackbox::postgresql"
-include_recipe "rackbox::ruby"
-include_recipe "rackbox::nginx"
+#include_recipe "rackbox::ruby"
+#include_recipe "rackbox::nginx"
 include_recipe "rackbox::jenkins"
 
 include_recipe "imagemagick"
 include_recipe "imagemagick::devel"
 include_recipe "imagemagick::rmagick"
 
-if node["rackbox"]["apps"]["unicorn"]
-  include_recipe "rackbox::unicorn"
-end
-
-if node["rackbox"]["apps"]["passenger"]
-  include_recipe "rackbox::passenger"
-end
+#if node["rackbox"]["apps"]["unicorn"]
+#  include_recipe "rackbox::unicorn"
+#end
+#
+#if node["rackbox"]["apps"]["passenger"]
+#  include_recipe "rackbox::passenger"
+#end
 
 unless node["rackbox"]["databases"].nil?
   if node["rackbox"]["databases"]["postgresql"]
