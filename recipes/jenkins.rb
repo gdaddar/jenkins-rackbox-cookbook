@@ -4,14 +4,13 @@
 #
 # Install and setup Jenkins environment
 #
-puts "jabberwocky"
-puts node["jenkins"]["server"]["version"]
-
 include_recipe "java"
 include_recipe "jenkins"
 
-
 ip_address = node["jenkinsbox"]["jenkins"]["ip_address"]
+git_name = node["jenkinsbox"]["jenkins"]["git_name"]
+git_email = node["jenkinsbox"]["jenkins"]["git_email"]
+#job_name = node["jenkinsbox"]["jenkins"]["job"]
 
 directory "#{node[:jenkins][:server][:home]}" do
   owner "#{node[:jenkins][:server][:user]}"
@@ -37,20 +36,16 @@ end
 
 end
 
-git_repo = node["jenkinsbox"]["jenkins"]["git_repo"]
-build_command = node["jenkinsbox"]["jenkins"]["command"]
-job_name = node["jenkinsbox"]["jenkins"]["job"]
-node["jenkinsbox"]["jenkins"]["ip_address"]
-
-template '/home/jj-config.xml' do
-  source 'jenkins-job_config.xml.erb'
-  variables ({:git_url => git_repo, :build_command => build_command})
-end
-
-jenkins_cli "create-job #{job_name} < /home/jj-config.xml" unless File.exist? ("/var/lib/jenkins/jobs/#{job_name}/config.xml")
+#template '/home/jj-config.xml' do
+#  source 'jenkins-job_config.xml.erb'
+#  variables ({:git_url => git_repo, :build_command => build_command})
+#end
+#
+#jenkins_cli "create-job #{job_name} < /home/jj-config.xml" unless File.exist? ("/var/lib/jenkins/jobs/#{job_name}/config.xml")
 
 template '/var/lib/jenkins/hudson.plugins.git.GitSCM.xml' do
   source 'jenkins-git-config.xml.erb'
+  variables ({:git_name => git_name, :git_email => git_email})
 end
 
 jenkins_cli "safe-restart"
