@@ -7,7 +7,6 @@
 include_recipe "java"
 include_recipe "jenkins"
 
-ip_address = node["jenkinsbox"]["jenkins"]["ip_address"]
 git_name = node["jenkinsbox"]["jenkins"]["git_name"]
 git_email = node["jenkinsbox"]["jenkins"]["git_email"]
 #job_name = node["jenkinsbox"]["jenkins"]["job"]
